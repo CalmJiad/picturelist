@@ -1,4 +1,4 @@
-export const getStaticPaths = async () => {
+export const getServerSidePaths = async () => {
   const res = await fetch(
     "https://api.unsplash.com/photos/?client_id=XJAobh5mpjXy2G1gXy-9c2OVH8zfqi65RHDzcCr0WYU"
   );
@@ -15,10 +15,9 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const id = context.params.id;
   console.log(id);
-
   const res = await fetch(
     `https://api.unsplash.com/photos/${id}?client_id=XJAobh5mpjXy2G1gXy-9c2OVH8zfqi65RHDzcCr0WYU`
   );
@@ -41,7 +40,7 @@ const Details = ({ image }) => {
       <h2 className={`${styles.title} text-success`}>
         Individual Picture Details Page
       </h2>
-      {/* <div
+      <div
         className="card m-auto"
         style={{ width: "25rem", border: "2px solid grey" }}
       >
@@ -64,7 +63,7 @@ const Details = ({ image }) => {
             Raw Image Size: {image.width} X {image.height} Pixels
           </p>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
