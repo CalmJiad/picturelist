@@ -17,10 +17,14 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
+  console.log(id);
+
   const res = await fetch(
     `https://api.unsplash.com/photos/${id}?client_id=XJAobh5mpjXy2G1gXy-9c2OVH8zfqi65RHDzcCr0WYU`
   );
   const data = await res.json();
+
+  console.log(data);
 
   return {
     props: { image: data },
@@ -37,7 +41,7 @@ const Details = ({ image }) => {
       <h2 className={`${styles.title} text-success`}>
         Individual Picture Details Page
       </h2>
-      <div
+      {/* <div
         className="card m-auto"
         style={{ width: "25rem", border: "2px solid grey" }}
       >
@@ -60,7 +64,7 @@ const Details = ({ image }) => {
             Raw Image Size: {image.width} X {image.height} Pixels
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
